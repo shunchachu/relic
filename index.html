@@ -143,8 +143,8 @@
         <button id="tabJournal" onclick="switchView('journal')" data-i18n="timeJournal" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-wabi-stone hover:text-wabi-ink dark:hover:text-stone-200">
           📜 時光手札
         </button>
-        <button id="tabGarden" onclick="switchView('garden')" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-wabi-stone hover:text-wabi-ink dark:hover:text-stone-200 flex items-center gap-1.5">
-          <span data-i18n="memoryGarden">🌸 回憶花園</span>
+        <button id="tabGarden" onclick="switchView('garden')" data-i18n="memoryGarden" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-wabi-stone hover:text-wabi-ink dark:hover:text-stone-200 flex items-center gap-1.5">
+          <span>🌸 回憶花園</span>
           <span class="text-[10px] bg-wabi-clay/20 text-wabi-clay px-1.5 py-0.5 rounded-full font-sans">Pro</span>
         </button>
       </nav>
@@ -199,7 +199,7 @@
                 <span id="quoteDayTag" data-i18n="dailyQuoteTag">本日心境字卡</span>
               </span>
               <span class="group-hover:text-wabi-clay transition-colors flex items-center gap-1">
-                <span id="quoteIndexIndicator">1 / 3</span>
+                <span id="quoteIndexIndicator">1 / 20</span>
                 <svg class="w-3 h-3 transform group-hover:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
               </span>
             </div>
@@ -317,7 +317,7 @@
           <div class="p-3.5 rounded-xl border border-wabi-sand dark:border-stone-800 bg-white/40 dark:bg-stone-900/40">
             <div class="flex items-center justify-between mb-1">
               <h4 class="font-serif font-medium text-wabi-ink dark:text-stone-200" data-i18n="flowerMeaningTitle">花語與陪伴象徵</h4>
-              <span class="text-[10px] text-wabi-stone" id="gardenStatsText">已培育 2 朵花木</span>
+              <span class="text-[10px] text-wabi-stone" id="gardenStatsText">已培育 3 朵花木</span>
             </div>
             <p class="text-wabi-stone leading-relaxed" data-i18n="flowerMeaningDesc">每一株植物皆與特定的時光手札綁定。透過日常微小的陪伴與關懷，花木將從芽苗緩緩含苞、盛開，象徵這段關係中多了一座不可磨滅的燈塔。</p>
           </div>
@@ -563,9 +563,9 @@
     </div>
   </div>
 
-  <!-- 7. Plant Seed Modal -->
+  <!-- 7. Plant Seed Modal (擴充至 10 種品種) -->
   <div id="plantSeedModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
-    <div class="glass-card rounded-3xl p-6 sm:p-7 max-w-md w-full shadow-2xl border border-wabi-gold/40 max-h-[92vh] overflow-y-auto">
+    <div class="glass-card rounded-3xl p-6 sm:p-7 max-w-lg w-full shadow-2xl border border-wabi-gold/40 max-h-[92vh] overflow-y-auto">
       <div class="flex items-center justify-between mb-4">
         <h3 class="font-serif font-semibold text-lg">🌱 種下新回憶花木</h3>
         <button onclick="closePlantSeedModal()" class="text-wabi-stone hover:text-wabi-ink text-sm">✕</button>
@@ -577,35 +577,47 @@
         </div>
 
         <div>
-          <label class="block text-wabi-stone mb-1.5 font-medium">選擇花木品種 (品種名稱會保留)</label>
-          <div id="seedTypeSelector" class="grid grid-cols-2 gap-2 text-xs">
-            <button type="button" data-variety="camellia" onclick="selectSeedVariety('camellia')" class="seed-option p-2.5 rounded-xl border border-wabi-clay bg-wabi-gold/10 text-left transition flex items-center gap-2">
-              <span class="text-2xl">🌺</span>
-              <div>
-                <div class="font-serif font-bold text-wabi-ink dark:text-stone-100">深情山茶花</div>
-                <div class="text-[10px] text-wabi-stone">深沉且執著的愛</div>
-              </div>
+          <label class="block text-wabi-stone mb-1.5 font-medium">選擇花木品種 (共 10 種可選)</label>
+          <div id="seedTypeSelector" class="grid grid-cols-2 gap-2 text-xs max-h-[220px] overflow-y-auto pr-1">
+            <button type="button" data-variety="camellia" onclick="selectSeedVariety('camellia')" class="seed-option p-2 rounded-xl border border-wabi-clay bg-wabi-gold/10 text-left transition flex items-center gap-2">
+              <span class="text-xl">🌺</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">深情山茶花</div><div class="text-[10px] text-wabi-stone">深沉且執著的愛</div></div>
             </button>
-            <button type="button" data-variety="sakura" onclick="selectSeedVariety('sakura')" class="seed-option p-2.5 rounded-xl border border-wabi-sand/80 bg-white/50 dark:bg-stone-800/50 text-left transition flex items-center gap-2">
-              <span class="text-2xl">🌸</span>
-              <div>
-                <div class="font-serif font-bold text-wabi-ink dark:text-stone-100">奈良山櫻</div>
-                <div class="text-[10px] text-wabi-stone">高雅純潔的片刻</div>
-              </div>
+            <button type="button" data-variety="sakura" onclick="selectSeedVariety('sakura')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🌸</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">奈良山櫻</div><div class="text-[10px] text-wabi-stone">高雅純潔的片刻</div></div>
             </button>
-            <button type="button" data-variety="bamboo" onclick="selectSeedVariety('bamboo')" class="seed-option p-2.5 rounded-xl border border-wabi-sand/80 bg-white/50 dark:bg-stone-800/50 text-left transition flex items-center gap-2">
-              <span class="text-2xl">🎋</span>
-              <div>
-                <div class="font-serif font-bold text-wabi-ink dark:text-stone-100">青翠若竹</div>
-                <div class="text-[10px] text-wabi-stone">長久不滅的陪伴</div>
-              </div>
+            <button type="button" data-variety="bamboo" onclick="selectSeedVariety('bamboo')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🎋</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">青翠若竹</div><div class="text-[10px] text-wabi-stone">長久不滅的陪伴</div></div>
             </button>
-            <button type="button" data-variety="sunflower" onclick="selectSeedVariety('sunflower')" class="seed-option p-2.5 rounded-xl border border-wabi-sand/80 bg-white/50 dark:bg-stone-800/50 text-left transition flex items-center gap-2">
-              <span class="text-2xl">🌻</span>
-              <div>
-                <div class="font-serif font-bold text-wabi-ink dark:text-stone-100">溫暖向日葵</div>
-                <div class="text-[10px] text-wabi-stone">陽光朝向的關懷</div>
-              </div>
+            <button type="button" data-variety="sunflower" onclick="selectSeedVariety('sunflower')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🌻</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">溫暖向日葵</div><div class="text-[10px] text-wabi-stone">陽光朝向的關懷</div></div>
+            </button>
+            <button type="button" data-variety="rose" onclick="selectSeedVariety('rose')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🌹</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">赤紅玫瑰</div><div class="text-[10px] text-wabi-stone">永不褪色的牽絆</div></div>
+            </button>
+            <button type="button" data-variety="lavender" onclick="selectSeedVariety('lavender')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🪻</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">薰衣草</div><div class="text-[10px] text-wabi-stone">平靜安心的守護</div></div>
+            </button>
+            <button type="button" data-variety="daisy" onclick="selectSeedVariety('daisy')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🌼</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">純真雛菊</div><div class="text-[10px] text-wabi-stone">希望與純真陪伴</div></div>
+            </button>
+            <button type="button" data-variety="tulip" onclick="selectSeedVariety('tulip')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🌷</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">優雅鬱金香</div><div class="text-[10px] text-wabi-stone">永恆真摯的祝福</div></div>
+            </button>
+            <button type="button" data-variety="ivy" onclick="selectSeedVariety('ivy')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🪴</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">綠意常春藤</div><div class="text-[10px] text-wabi-stone">永不分離的記憶</div></div>
+            </button>
+            <button type="button" data-variety="lotus" onclick="selectSeedVariety('lotus')" class="seed-option p-2 rounded-xl border border-wabi-sand/80 text-left transition flex items-center gap-2">
+              <span class="text-xl">🪷</span>
+              <div><div class="font-serif font-bold text-wabi-ink dark:text-stone-100">淨心蓮花</div><div class="text-[10px] text-wabi-stone">深沉清淨的感恩</div></div>
             </button>
           </div>
         </div>
@@ -637,7 +649,7 @@
         </div>
         <div class="flex items-center justify-between text-[11px] pt-1 border-t border-wabi-sand/50 text-wabi-stone">
           <span>澆灌次數：<span id="modalPlantWaterCount" class="font-mono font-bold text-wabi-clay">5</span> 次</span>
-          <span>培育次數：<span id="modalPlantCultivations" class="font-mono font-bold text-wabi-moss">18</span> 次</span>
+          <span>成長進度：<span id="modalPlantCultivations" class="font-mono font-bold text-wabi-moss">100%</span></span>
         </div>
       </div>
 
@@ -728,7 +740,7 @@
     let pendingDeletion = null;
     let pendingUploadedPhotos = [];
 
-    // Complete i18n Data Dictionary
+    // 20 Quotes Data Dictionary
     const i18nDict = {
       'zh-TW': {
         subTitle: "時光餘額", timePointer: "⏳ 時光指針", timeJournal: "📜 時光手札", memoryGarden: "🌸 回憶花園",
@@ -749,7 +761,24 @@
         quotes: [
           { text: "「我們總以為日子還很長，但刨除睡眠與雜事，一年裡能圍在餐桌前聽她碎念的時光，其實只剩這三百多個小時。」", source: "歲月沉思" },
           { text: "「所謂父母子女一場，只不過意味著，你和他的緣分就是今生今世不斷地在目送他的背影漸行漸遠。」", source: "龍應台《目送》" },
-          { text: "「別等到想要握緊那雙手時，才發現手心裡只剩風的溫度。相聚是不可逆的減法，但真心可以讓它變成永恆。」", source: "時光註腳" }
+          { text: "「別等到想要握緊那雙手時，才發現手心裡只剩風的溫度。相聚是不可逆的減法，但真心可以讓它變成永恆。」", source: "時光註腳" },
+          { text: "「父母在，人生尚有來處；父母去，人生隻剩歸途。」", source: "畢淑敏" },
+          { text: "「長大後才明白，家不是一個地方，而是有他們在的歲月安穩。」", source: "歲月手札" },
+          { text: "「時間不會等我們準備好，陪伴永遠該是進行式而非未來式。」", source: "時光指針" },
+          { text: "「每一次告別時的揮手，都值得我們用全身心的專注去握緊。」", source: "生活感悟" },
+          { text: "「愛不是宏大的誓言，而是廚房裡那一碗熱湯與無關緊要的碎碎唸。」", source: "回憶琥珀" },
+          { text: "「我們在長大，他們在老去，這是一場無法暫停的倒數計時。」", source: "生命刻度" },
+          { text: "「世上最遺憾的事，莫過於在有能力的年歲，卻錯過了能陪伴的時間。」", source: "時光餘額" },
+          { text: "「時間最殘忍的地方，在於它總是在我們最不經意時悄然溜走。」", source: "哲思片段" },
+          { text: "「多打一通電話，多一次擁抱，就是對歲月最溫柔的抗爭。」", source: "暖心提醒" },
+          { text: "「照片能定格笑容，但只有真實的陪伴能定格溫暖。」", source: "記憶花園" },
+          { text: "「我們學會了向世界奔跑，卻常常忘了回頭看看等在原地的人。」", source: "心靈字卡" },
+          { text: "「歲月帶走了年輕的容顔，卻帶不走傾注在彼此身上的關心。」", source: "親情寄語" },
+          { text: "「今天見面的這幾個小時，是未來漫長歲月中不可複製的寶藏。」", source: "時光琥珀" },
+          { text: "「不要把最溫柔的一面留給陌生人，把耐心留給最深愛你的人。」", source: "處世手記" },
+          { text: "「每一次回家，都是一次對童年記憶的重逢與對歲月的溫柔和解。」", source: "返鄉札記" },
+          { text: "「生命有限，但真心陪伴留下的記憶可以在心中閃耀一生。」", source: "常青花語" },
+          { text: "「抓緊每一個能相聚的黃昏，因為每個黃昏都是獨一無二的奇蹟。」", source: "夕陽感悟" }
         ],
         tasks: [
           "打一通不帶任何目的的 10 分鐘電話，問問媽媽小時候最喜歡吃的一道點心。",
@@ -760,7 +789,13 @@
           'camellia': { name: '深情山茶花', meaning: '花語：謙遜的美德、深沉且執著的愛' },
           'sakura': { name: '奈良山櫻', meaning: '花語：高雅純潔、珍貴的短暫片刻' },
           'bamboo': { name: '青翠若竹', meaning: '花語：節節高升、堅定長青的陪伴' },
-          'sunflower': { name: '溫暖向日葵', meaning: '花語：陽光熱烈、永遠朝向你的關懷' }
+          'sunflower': { name: '溫暖向日葵', meaning: '花語：陽光熱烈、永遠朝向你的關懷' },
+          'rose': { name: '赤紅玫瑰', meaning: '花語：熾熱真摯、永不褪色的牽絆' },
+          'lavender': { name: '薰衣草', meaning: '花語：等待愛情、平靜安心的守護' },
+          'daisy': { name: '純真雛菊', meaning: '花語：純真天真、希望與和平陪伴' },
+          'tulip': { name: '優雅鬱金香', meaning: '花語：愛的告白、永恆真摯祝福' },
+          'ivy': { name: '綠意常春藤', meaning: '花語：永不分離、長久的記憶' },
+          'lotus': { name: '淨心蓮花', meaning: '花語：清淨無瑕、深沉的感恩' }
         },
         defaultTargets: { '1': { name: '媽媽', relation: '母親' } }
       },
@@ -782,7 +817,24 @@
         quotes: [
           { text: "“We always think time is endless, but minus sleep and errands, we only have a few hundred hours left together.”", source: "Time Reflections" },
           { text: "“Parenting and childhood are just a long farewell, watching each other walk further away into the horizon.”", source: "Sight of the Back" },
-          { text: "“Don't wait until you reach out, only to catch the temperature of the cold wind.”", source: "Relic Notes" }
+          { text: "“Don't wait until you reach out, only to catch the temperature of the cold wind.”", source: "Relic Notes" },
+          { text: "“While parents are alive, you have a place to come home to; when they are gone, life has only a return journey.”", source: "Bi Shumin" },
+          { text: "“Growing up means realizing home isn't a place, but peace of mind whenever they are around.”", source: "Memories" },
+          { text: "“Time doesn't wait for us to be ready. Love should always be present, never future tense.”", source: "Time Pointer" },
+          { text: "“Every wave goodbye deserves our full heart when holding hands.”", source: "Life Insights" },
+          { text: "“Love isn't grand promises, but warm soup in the kitchen and harmless chatter.”", source: "Amber Memories" },
+          { text: "“We grow up while they grow old; it is an unpausable countdown.”", source: "Life Clock" },
+          { text: "“The greatest regret is missing time together when we finally have the capacity to give.”", source: "Time Balance" },
+          { text: "“Time's cruelty lies in slipping away when we notice it least.”", source: "Philosophical Fragment" },
+          { text: "“One more phone call, one more hug, is our gentlest rebellion against time.”", source: "Warm Reminder" },
+          { text: "“Photos capture smiles, but only presence captures warmth.”", source: "Garden of Memory" },
+          { text: "“We learned to run towards the world, but forgot to look back at those waiting.”", source: "Card of Soul" },
+          { text: "“Years take away youth, but never the care poured into each other.”", source: "Family Love" },
+          { text: "“These few hours together today are irreplaceable treasures for future years.”", source: "Time Amber" },
+          { text: "“Don't leave your gentlest side for strangers; save patience for those who love you most.”", source: "Life Notes" },
+          { text: "“Going home is a reunion with childhood and a gentle reconciliation with time.”", source: "Homecoming" },
+          { text: "“Life is finite, but memories of presence shine in our hearts forever.”", source: "Evergreen" },
+          { text: "“Cherish every sunset together, for each twilight is a unique miracle.”", source: "Sunset Reflections" }
         ],
         tasks: [
           "Call without any motive for 10 minutes, ask about their favorite childhood snack.",
@@ -793,7 +845,13 @@
           'camellia': { name: 'Camellia', meaning: 'Language: Modest virtue & deep devoted love' },
           'sakura': { name: 'Mountain Sakura', meaning: 'Language: Elegant purity & precious fleeting moments' },
           'bamboo': { name: 'Green Bamboo', meaning: 'Language: Steadfast vitality & enduring companionship' },
-          'sunflower': { name: 'Warm Sunflower', meaning: 'Language: Radiance, warmth & unwavering devotion' }
+          'sunflower': { name: 'Warm Sunflower', meaning: 'Language: Radiance, warmth & unwavering devotion' },
+          'rose': { name: 'Red Rose', meaning: 'Language: Passionate, genuine & everlasting bond' },
+          'lavender': { name: 'Lavender', meaning: 'Language: Peace, tranquility & silent protection' },
+          'daisy': { name: 'Daisy', meaning: 'Language: Innocence, hope & pure companionship' },
+          'tulip': { name: 'Tulip', meaning: 'Language: Eternal blessings & heartfelt affection' },
+          'ivy': { name: 'Green Ivy', meaning: 'Language: Enduring memories & everlasting union' },
+          'lotus': { name: 'Lotus', meaning: 'Language: Pure grace & deep gratitude' }
         },
         defaultTargets: { '1': { name: 'Mom', relation: 'Mother' } }
       },
@@ -815,7 +873,24 @@
         quotes: [
           { text: "「時間は無限にあると思いがちだが、睡眠や雑務を除けば、一緒に過ごせるのはあと数百時間しかない。」", source: "時の思索" },
           { text: "「親子とは、お互いの後ろ姿が遠ざかっていくのを静かに見送る縁に過ぎないのかもしれない。」", source: "見送る" },
-          { text: "「手を握ろうとした時には、風の冷たさしか残っていないということのないように。」", source: "Relic 備忘" }
+          { text: "「手を握ろうとした時には、風の冷たさしか残っていないということのないように。」", source: "Relic 備忘" },
+          { text: "「親がいる間は帰る場所がある。居なくなれば、人生はただ帰路を辿るだけとなる。」", source: "人生の旅" },
+          { text: "「大人になって気づいた。家とは場所ではなく、あの人たちがいる穏やかな時間のことだと。」", source: "記憶のメモ" },
+          { text: "「時間は準備を待ってくれない。寄り添うことは、常に現在形であるべきだ。」", source: "時の指針" },
+          { text: "「手を振る別れの瞬間こそ、全身全霊で握りしめる価値がある。」", source: "生活の気づき" },
+          { text: "「愛とは大げさな誓いではなく、台所の温かいスープと他愛もない雑談のことだ。」", source: "想い出の琥珀" },
+          { text: "「自分が成長する一方で親は老いていく。これは止められないカウントダウンだ。」", source: "生命の時計" },
+          { text: "「一番の後悔は、寄り添う力がついた時には、もうその時間が残されていないことだ。」", source: "時の残高" },
+          { text: "「時間の残酷さは、私たちが一番油断している時に静かに過ぎ去ることにある。」", source: "哲学的断片" },
+          { text: "「電話をもう一本、抱擁をもう一度。それが歳月への最も優しい抵抗だ。」", source: "心温まる一言" },
+          { text: "「写真は笑顔を切り取るが、温もりを切り取れるのは真の寄り添いだけだ。」", source: "記憶の庭園" },
+          { text: "「世界へと駆け出すことを覚えた私たちは、待ってくれている人振り返るのを忘れがちだ。」", source: "心のカード" },
+          { text: "「歳月は若さを奪うが、注ぎ合っ愛しさを奪うことはできない。」", source: "家族の絆" },
+          { text: "「今日過ごしたこの数時間は、これからの長い人生で二度と再現できない宝物だ。」", source: "琥珀の時間" },
+          { text: "「見知らぬ人に一番優しい顔を見せないで。忍耐はあなたを一番愛する人のためにとっておこう。」", source: "人生のメモ" },
+          { text: "「実家に帰るたびに、幼少期の記憶と再会し、歳月と穏やかに和解する。」", source: "帰省手記" },
+          { text: "「命は有限だが、寄り添った記憶は心の中で一生輝き続ける。」", source: "常緑の花言葉" },
+          { text: "「共に過ごせる夕暮れを大切にしよう。どの夕焼けも二度とない奇跡なのだから。」", source: "夕焼けの思索" }
         ],
         tasks: [
           "用事のない10分間の電話をかけ、子供の頃好きだったお菓子の話を聞いてみよう。",
@@ -826,7 +901,13 @@
           'camellia': { name: '深情の山茶花', meaning: '花言葉：控えめな美徳、深い愛' },
           'sakura': { name: '奈良の山桜', meaning: '花言葉：気品ある純粋さ、かけがえのない瞬間' },
           'bamboo': { name: '青翠の若竹', meaning: '花言葉：不変の絆、永恒の寄り添い' },
-          'sunflower': { name: '温もりの向日葵', meaning: '花言葉：情熱的な光、あなたへの一途な関心' }
+          'sunflower': { name: '温もりの向日葵', meaning: '花言葉：情熱的な光、あなたへの一途な関心' },
+          'rose': { name: '深紅の薔薇', meaning: '花言葉：情熱的な誠実さ、色褪せない絆' },
+          'lavender': { name: 'ラベンダー', meaning: '花言葉：静かな見守り、安らぎの保護' },
+          'daisy': { name: '純真なヒナギク', meaning: '花言葉：希望、純粋な寄り添い' },
+          'tulip': { name: '優雅なチューリップ', meaning: '花言葉：永遠の祝福、心からの愛' },
+          'ivy': { name: 'アイビー', meaning: '花言葉：不滅の記憶、離れない絆' },
+          'lotus': { name: '清らかなハス', meaning: '花言葉：深遠な感謝、清らかな心' }
         },
         defaultTargets: { '1': { name: 'お母さん', relation: '母親' } }
       }
@@ -848,7 +929,7 @@
       }
     ];
 
-    // 種植花木列表 (customTag 用於灰色自訂標籤)
+    // 花木列表 (包含 10 種品種支援)
     let gardenPlants = [
       {
         id: 'p1',
@@ -856,7 +937,7 @@
         variety: 'camellia',
         story: '為媽媽做的一頓晚餐與手作筍乾排骨湯',
         stage: 3,
-        waterCount: 7,
+        waterCount: 12,
         cultivations: 18,
         icons: ['🌱', '🌿', '🌺']
       },
@@ -865,10 +946,20 @@
         customTag: '每週深夜通話',
         variety: 'bamboo',
         story: '深夜在客廳聽她細數童年最想去的城市',
-        stage: 3,
-        waterCount: 9,
-        cultivations: 24,
+        stage: 2,
+        waterCount: 6,
+        cultivations: 10,
         icons: ['🌱', '🎋', '🎍']
+      },
+      {
+        id: 'p3',
+        customTag: '陽光散步約定',
+        variety: 'sunflower',
+        story: '帶媽媽去公園散步拍照，陽光正好。',
+        stage: 3,
+        waterCount: 12,
+        cultivations: 20,
+        icons: ['🌱', '🌿', '🌻']
       }
     ];
 
@@ -1413,9 +1504,9 @@
       selectedSeedVariety = v;
       document.querySelectorAll('.seed-option').forEach(btn => {
         if (btn.getAttribute('data-variety') === v) {
-          btn.className = "seed-option p-2.5 rounded-xl border border-wabi-clay bg-wabi-gold/10 text-left transition flex items-center gap-2 shadow-sm";
+          btn.className = "seed-option p-2 rounded-xl border border-wabi-clay bg-wabi-gold/10 text-left transition flex items-center gap-2 shadow-sm";
         } else {
-          btn.className = "seed-option p-2.5 rounded-xl border border-wabi-sand/80 bg-white/50 dark:bg-stone-800/50 text-left transition flex items-center gap-2 opacity-75 hover:opacity-100";
+          btn.className = "seed-option p-2 rounded-xl border border-wabi-sand/80 bg-white/50 dark:bg-stone-800/50 text-left transition flex items-center gap-2 opacity-75 hover:opacity-100";
         }
       });
     }
@@ -1423,7 +1514,19 @@
     function confirmPlantSeed() {
       const dict = i18nDict[currentLang] || i18nDict['zh-TW'];
       const vMeta = dict.varieties[selectedSeedVariety] || dict.varieties['camellia'];
-      const icons = selectedSeedVariety === 'bamboo' ? ['🌱', '🎋', '🎍'] : (selectedSeedVariety === 'sakura' ? ['🌱', '🌿', '🌸'] : (selectedSeedVariety === 'sunflower' ? ['🌱', '🌿', '🌻'] : ['🌱', '🌿', '🌺']));
+      
+      const iconsMap = {
+        'bamboo': ['🌱', '🎋', '🎍'],
+        'sakura': ['🌱', '🌿', '🌸'],
+        'sunflower': ['🌱', '🌿', '🌻'],
+        'rose': ['🌱', '🌿', '🌹'],
+        'lavender': ['🌱', '🌿', '🪻'],
+        'daisy': ['🌱', '🌿', '🌼'],
+        'tulip': ['🌱', '🌿', '🌷'],
+        'ivy': ['🌱', '🪴', '🪴'],
+        'lotus': ['🌱', '🌿', '🪷']
+      };
+      const icons = iconsMap[selectedSeedVariety] || ['🌱', '🌿', '🌺'];
 
       const customTag = document.getElementById('inputPlantCustomTag').value.trim();
       const story = document.getElementById('inputPlantStory').value.trim() || '許下一個為對方空出時間的承諾';
@@ -1453,15 +1556,15 @@
       const vMeta = dict.varieties[p.variety] || dict.varieties['camellia'];
 
       const stageIdx = Math.min(p.icons.length - 1, p.stage - 1);
-      const defaultStageText = p.stage === 1 ? '初生幼苗' : (p.stage === 2 ? '青翠含苞' : '燦爛盛開');
+      const growthPercent = Math.min(100, Math.floor((p.waterCount / 12) * 100));
 
       document.getElementById('modalPlantIcon').textContent = p.icons[stageIdx];
-      document.getElementById('modalPlantTag').textContent = p.customTag || defaultStageText;
+      document.getElementById('modalPlantTag').textContent = p.customTag || `成長進度 ${growthPercent}%`;
       document.getElementById('modalPlantName').textContent = vMeta.name;
       document.getElementById('modalPlantMeaning').textContent = vMeta.meaning;
       document.getElementById('modalPlantStory').textContent = p.story;
       document.getElementById('modalPlantWaterCount').textContent = p.waterCount;
-      document.getElementById('modalPlantCultivations').textContent = p.cultivations;
+      document.getElementById('modalPlantCultivations').textContent = `${growthPercent}%`;
 
       const m = document.getElementById('plantStoryModal');
       m.classList.remove('hidden');
@@ -1528,24 +1631,32 @@
         const vMeta = dict.varieties[p.variety] || dict.varieties['camellia'];
         const stageIdx = Math.min(p.icons.length - 1, p.stage - 1);
         const icon = p.icons[stageIdx] || '🌱';
-        const defaultStageText = p.stage === 1 ? '初生幼苗' : (p.stage === 2 ? '青翠含苞' : '燦爛盛開');
+        
+        // 計算成長百分比 (%數)
+        const growthPercent = Math.min(100, Math.floor((p.waterCount / 12) * 100));
 
         const col = document.createElement('div');
         col.className = "flex flex-col items-center group cursor-pointer p-2 rounded-2xl hover:bg-wabi-sand/40 transition duration-300";
         col.onclick = () => openPlantStoryModal(p.id);
 
         col.innerHTML = `
-          <div class="w-16 h-24 sm:w-20 sm:h-28 flex items-center justify-center text-4xl sm:text-5xl transform group-hover:scale-110 transition duration-300">
+          <!-- 植物 Emoji 圖示 -->
+          <div class="w-16 h-20 sm:w-20 sm:h-24 flex items-center justify-center text-4xl sm:text-5xl transform group-hover:scale-110 transition duration-300">
             ${icon}
           </div>
-          <div class="w-12 h-3 rounded-full bg-wabi-ink/10 mt-1 blur-[1px]"></div>
           
-          <!-- 上方灰色自訂標籤 / 生長狀態 -->
-          <span class="text-[10px] px-2 py-0.5 rounded-full bg-wabi-sand/80 dark:bg-stone-800 text-wabi-stone font-sans mt-1.5 truncate max-w-[110px] text-center">
-            ${p.customTag || defaultStageText}
-          </span>
+          <!-- 進度條與自訂備忘標籤 -->
+          <div class="w-full max-w-[100px] mt-2 flex flex-col items-center">
+            <div class="w-full h-1.5 bg-wabi-sand dark:bg-stone-800 rounded-full overflow-hidden border border-wabi-sand/60">
+              <div class="h-full bg-wabi-moss transition-all duration-500" style="width: ${growthPercent}%"></div>
+            </div>
+            
+            <span class="text-[10px] text-wabi-stone font-sans mt-1 truncate max-w-[105px] text-center">
+              ${p.customTag ? p.customTag : (growthPercent >= 100 ? '盛開 100%' : `成長 ${growthPercent}%`)}
+            </span>
+          </div>
 
-          <!-- 主標題：固定保留品種名稱 -->
+          <!-- 主標題：保留品種名稱 -->
           <span class="text-xs font-serif font-bold mt-1 text-wabi-ink dark:text-stone-100 truncate max-w-[110px] text-center">
             ${vMeta.name}
           </span>
@@ -1575,16 +1686,13 @@
       currentLang = lang;
       const dict = i18nDict[lang] || i18nDict['zh-TW'];
 
-      // 替換全靜態 data-i18n
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) el.textContent = dict[key];
       });
 
-      // 副標題
       document.getElementById('appSubTitle').textContent = dict.subTitle;
 
-      // 更新預設對象
       if (dict.defaultTargets[currentTargetId]) {
         const def = dict.defaultTargets[currentTargetId];
         const t = targets.find(item => item.id === currentTargetId);
@@ -1594,10 +1702,10 @@
         }
       }
 
-      // 刷新當前內容與圖卡
       currentQuoteIndex = 0;
       document.getElementById('displayQuoteText').textContent = dict.quotes[0].text;
       document.getElementById('quoteDayTag').textContent = `時光字卡 • ${dict.quotes[0].source}`;
+      document.getElementById('quoteIndexIndicator').textContent = `1 / ${dict.quotes.length}`;
       document.getElementById('dailyTaskText').textContent = dict.tasks[0];
 
       updateCountdownUI();
@@ -1605,7 +1713,7 @@
       showToast(`Language switched: ${lang}`);
     }
 
-    // User Dropdown & Account
+    // User Dropdown & Security
     function toggleUserDropdown() {
       document.getElementById('userDropdown').classList.toggle('hidden');
     }
