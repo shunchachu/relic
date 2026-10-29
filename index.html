@@ -7,13 +7,13 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Noto Serif TC & Inter for Japanese/Zen aesthetic -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;600;900&display=swap" rel="stylesheet">
   <!-- Supabase Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- Canvas Confetti for celebratory micro-animations -->
+  <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
@@ -83,7 +83,7 @@
 
 <body class="bg-wabi-cream text-wabi-ink dark:bg-[#181614] dark:text-[#E8E2D9] font-sans antialiased min-h-full transition-colors duration-500 selection:bg-wabi-gold/30">
 
-  <!-- Navigation -->
+  <!-- Top Navigation Bar -->
   <header class="sticky top-0 z-40 w-full border-b border-wabi-sand/80 dark:border-stone-800 glass-card">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
@@ -136,6 +136,7 @@
   </header>
 
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 pb-28">
+    <!-- Main Tabs -->
     <div class="flex justify-center mb-8">
       <nav class="inline-flex p-1 rounded-2xl glass-card shadow-glass border border-wabi-sand dark:border-stone-800" aria-label="Tabs">
         <button id="tabCountdown" onclick="switchView('countdown')" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-wabi-ink text-wabi-cream dark:bg-stone-100 dark:text-stone-900 shadow-sm">
@@ -318,7 +319,7 @@
           <div class="p-3.5 rounded-xl border border-wabi-sand dark:border-stone-800 bg-white/40 dark:bg-stone-900/40">
             <div class="flex items-center justify-between mb-1">
               <h4 class="font-serif font-medium text-wabi-ink dark:text-stone-200">花語與陪伴象徵</h4>
-              <span class="text-[10px] text-wabi-stone" id="gardenStatsText">已培育 3 朵花木</span>
+              <span class="text-[10px] text-wabi-stone" id="gardenStatsText">已培育 2 朵花木</span>
             </div>
             <p class="text-wabi-stone leading-relaxed">每一株植物皆與特定的時光手札綁定。透過日常微小的陪伴與關懷，花木將從芽苗緩緩含苞、盛開，象徵這段關係中多了一座不可磨滅的燈塔。</p>
           </div>
@@ -327,80 +328,85 @@
     </div>
   </main>
 
-  <!-- Modals -->
-  <!-- 1. Bonus Modal -->
-  <div id="bonusModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
-    <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl text-center border border-wabi-gold/40" id="bonusModalBox">
-      <div class="w-14 h-14 mx-auto rounded-full bg-wabi-gold/20 text-wabi-gold flex items-center justify-center text-2xl mb-4">🕊️</div>
-      <span class="text-xs tracking-widest text-wabi-clay font-semibold uppercase">時光逆流 • 行動解鎖</span>
-      <h3 class="font-serif font-bold text-2xl mt-1 text-wabi-ink dark:text-stone-100"><span id="bonusAddedHoursText">+24</span> 小時 刻度已延長</h3>
-      <p class="text-xs font-serif text-wabi-stone leading-relaxed my-4" id="bonusModalQuote">
-        「命運給了人生有限的沙漏，但每一次真心的相聚，都如同偷回了一整天的朝夕相處。」
-      </p>
-      <div class="p-3 rounded-xl bg-wabi-sand/40 dark:bg-stone-800/40 text-xs text-wabi-ink dark:text-stone-200 mb-6">
-        已成功為你與「<span id="bonusTargetName">媽媽</span>」的餘額增加 <span id="bonusAddedHoursDesc">24 小時</span> 時光。
-      </div>
-      <button onclick="closeBonusModal()" class="w-full py-2.5 rounded-xl bg-wabi-ink text-wabi-cream dark:bg-stone-100 dark:text-stone-900 text-sm font-medium hover:opacity-95 transition">帶著溫暖回到當下</button>
-    </div>
-  </div>
+  <!-- MODALS -->
 
-  <!-- Upgrade Modal (已調整為 49 元) -->
+  <!-- Upgrade Modal -->
   <div id="upgradeModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
     <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl text-center border border-wabi-gold/50">
       <div class="w-12 h-12 mx-auto rounded-2xl bg-wabi-gold/20 text-wabi-clay flex items-center justify-center text-xl mb-3">👑</div>
       <h3 class="font-serif font-bold text-xl text-wabi-ink dark:text-stone-100">解鎖 Relic Premium</h3>
-      <p class="text-xs text-wabi-stone mt-2 mb-4 leading-relaxed">
-        免費用戶上限為 1 個相聚對象。升級專屬時光守護者，為所有你深愛的人具象化相聚餘額。
-      </p>
+      <p class="text-xs text-wabi-stone mt-2 mb-4 leading-relaxed">免費用戶上限為 1 個相聚對象。升級專屬時光守護者，為所有你深愛的人具象化相聚餘額。</p>
       <div class="space-y-2 text-left text-xs bg-wabi-sand/40 dark:bg-stone-800/40 p-3.5 rounded-xl mb-5">
         <div class="flex items-center gap-2 text-wabi-ink dark:text-stone-200"><span class="text-wabi-moss">✓</span> 無限新增對象 (父母、兒女、摯友、毛孩)</div>
         <div class="flex items-center gap-2 text-wabi-ink dark:text-stone-200"><span class="text-wabi-moss">✓</span> 解鎖完整「回憶花園」培育與日記綁定</div>
         <div class="flex items-center gap-2 text-wabi-ink dark:text-stone-200"><span class="text-wabi-moss">✓</span> 雲端多裝置即時同步與相片高畫質封存</div>
       </div>
-      <button onclick="simulateUpgradeSuccess()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-wabi-clay to-wabi-gold text-white text-xs font-semibold shadow hover:opacity-95 transition">
-        以月杯咖啡贊助 (NT$ 49 / 月)
-      </button>
-      <button onclick="toggleProMode(); closeUpgradeModal();" class="mt-2 w-full py-2 rounded-xl border border-wabi-clay/50 text-wabi-clay hover:bg-wabi-clay/10 text-xs font-medium transition">
-        ⚡ 立即開啟 Pro 體驗模式 (測試確認效果)
-      </button>
+      <button onclick="simulateUpgradeSuccess()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-wabi-clay to-wabi-gold text-white text-xs font-semibold shadow hover:opacity-95 transition">以月杯咖啡贊助 (NT$ 49 / 月)</button>
+      <button onclick="toggleProMode(); closeUpgradeModal();" class="mt-2 w-full py-2 rounded-xl border border-wabi-clay/50 text-wabi-clay hover:bg-wabi-clay/10 text-xs font-medium transition">⚡ 立即開啟 Pro 體驗模式</button>
       <button onclick="closeUpgradeModal()" class="mt-2 text-xs text-wabi-stone hover:text-wabi-ink block mx-auto">暫時保留</button>
     </div>
   </div>
 
-  <!-- Modal: Plant Story Details (已修正內容無法顯示問題) -->
+  <!-- Surprise Meeting Modal -->
+  <div id="surpriseMeetingModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-wabi-sand dark:border-stone-800">
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-wabi-sand/60">
+        <h3 class="font-serif font-semibold text-lg">安排一次驚喜見面</h3>
+        <button onclick="closeSurpriseMeetingModal()" class="text-wabi-stone hover:text-wabi-ink text-sm">✕</button>
+      </div>
+      <div class="space-y-3 mb-5">
+        <label class="block text-xs font-medium text-wabi-stone">快捷時數選擇：</label>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <button type="button" onclick="selectSurprisePreset(2, '一起喝個下午茶')" class="preset-btn p-3 rounded-xl border border-wabi-sand/80 bg-white/50 text-left hover:border-wabi-clay transition">
+            <div class="font-serif font-bold text-wabi-ink">+2 小時</div>
+            <div class="text-[11px] text-wabi-stone mt-0.5">喝下午茶 / 散步</div>
+          </button>
+          <button type="button" onclick="selectSurprisePreset(8, '回老家吃晚飯')" class="preset-btn p-3 rounded-xl border border-wabi-sand/80 bg-white/50 text-left hover:border-wabi-clay transition">
+            <div class="font-serif font-bold text-wabi-ink">+8 小時</div>
+            <div class="text-[11px] text-wabi-stone mt-0.5">半日探訪 / 晚餐</div>
+          </button>
+          <button type="button" onclick="selectSurprisePreset(24, '週末陪伴一整天')" class="preset-btn p-3 rounded-xl border border-wabi-clay bg-wabi-gold/10 text-left hover:border-wabi-clay transition">
+            <div class="font-serif font-bold text-wabi-clay">+24 小時</div>
+            <div class="text-[11px] text-wabi-stone mt-0.5">跨日返鄉 (扣除睡眠)</div>
+          </button>
+          <button type="button" onclick="selectSurprisePreset(48, '帶長輩出遊兩日')" class="preset-btn p-3 rounded-xl border border-wabi-sand/80 bg-white/50 text-left hover:border-wabi-clay transition">
+            <div class="font-serif font-bold text-wabi-ink">+48 小時</div>
+            <div class="text-[11px] text-wabi-stone mt-0.5">連假同行 / 深度旅遊</div>
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between border-t border-wabi-sand/60 pt-3">
+        <div class="text-xs">
+          <span class="text-wabi-stone">預計增加：</span>
+          <span id="selectedMeetingHoursDisplay" class="font-serif font-bold text-base text-wabi-clay">+24 小時</span>
+        </div>
+        <button onclick="confirmSurpriseMeetingBonus()" class="px-4 py-2 rounded-xl text-xs bg-gradient-to-r from-wabi-clay to-wabi-gold text-white font-medium shadow hover:opacity-95 transition">確認安排，奪回時光</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plant Story Modal -->
   <div id="plantStoryModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
     <div class="glass-card rounded-3xl p-6 sm:p-7 max-w-sm w-full shadow-2xl text-center border border-wabi-gold/40">
       <div id="modalPlantIcon" class="text-6xl mb-2 filter drop-shadow-md">🌺</div>
       <span id="modalPlantStageTag" class="text-[10px] px-2 py-0.5 rounded-full bg-wabi-moss/10 text-wabi-moss font-serif">盛開階段</span>
-      <h3 id="modalPlantName" class="font-serif font-bold text-xl mt-2 text-wabi-ink dark:text-stone-100">紅色山茶花</h3>
+      <h3 id="modalPlantName" class="font-serif font-bold text-xl mt-2 text-wabi-ink dark:text-stone-100">深情山茶花</h3>
       <p id="modalPlantMeaning" class="text-xs text-wabi-clay italic font-serif my-1">花語：謙遜的美德、深沉且執著的愛</p>
-      
+
       <div class="mt-3 p-3.5 rounded-2xl bg-wabi-sand/40 dark:bg-stone-800/50 text-left text-xs space-y-2 border border-wabi-sand/60">
         <div>
-          <span class="text-[10px] text-wabi-stone block" data-i18n="plantStoryLabel">綁定時光手札 / 承諾：</span>
+          <span class="text-[10px] text-wabi-stone block">綁定時光手札 / 承諾：</span>
           <span id="modalPlantStory" class="font-medium text-wabi-ink dark:text-stone-200">陪媽媽學會筍乾排骨湯的火候</span>
         </div>
         <div class="flex items-center justify-between text-[11px] pt-1 border-t border-wabi-sand/50 text-wabi-stone">
-          <span><span data-i18n="waterCountLabel">澆灌次數：</span><span id="modalPlantWaterCount" class="font-mono font-bold text-wabi-clay">5</span> 次</span>
-          <span><span data-i18n="cultivationTimesLabel">培育次數：</span><span id="modalPlantCultivations" class="font-mono font-bold text-wabi-moss">18</span> 次</span>
+          <span>澆灌次數：<span id="modalPlantWaterCount" class="font-mono font-bold text-wabi-clay">5</span> 次</span>
+          <span>培育次數：<span id="modalPlantCultivations" class="font-mono font-bold text-wabi-moss">18</span> 次</span>
         </div>
       </div>
 
       <div class="mt-5 flex flex-col gap-2">
-        <div class="flex gap-2">
-          <button onclick="waterCurrentPlantFromModal()" class="flex-1 py-2 rounded-xl bg-wabi-moss text-white text-xs font-medium hover:bg-opacity-90 transition flex items-center justify-center gap-1">
-            <span>💧</span> <span data-i18n="waterPlantBtn">澆水滋養 (+1)</span>
-          </button>
-          <button onclick="openEditPlantModalFromDetail()" class="px-3.5 py-2 rounded-xl border border-wabi-sand hover:border-wabi-clay text-xs text-wabi-stone hover:text-wabi-ink flex items-center justify-center gap-1">
-            <span>✏️</span> <span data-i18n="editBtn">編輯</span>
-          </button>
-        </div>
-        <div class="flex gap-2">
-          <button onclick="promptDeleteCurrentPlant()" class="flex-1 py-2 rounded-xl border border-red-200 dark:border-red-900/40 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 text-xs transition flex items-center justify-center gap-1">
-            <span>✂️</span> <span data-i18n="prunePlantBtn">告別並修剪此花木</span>
-          </button>
-          <button onclick="closePlantStoryModal()" class="px-4 py-2 rounded-xl text-xs text-wabi-stone hover:text-wabi-ink border border-wabi-sand" data-i18n="closeBtn">關閉</button>
-        </div>
+        <button onclick="waterCurrentPlantFromModal()" class="w-full py-2 rounded-xl bg-wabi-moss text-white text-xs font-medium hover:bg-opacity-90 transition">💧 澆水滋養 (+1)</button>
+        <button onclick="closePlantStoryModal()" class="w-full py-2 rounded-xl text-xs text-wabi-stone border border-wabi-sand">關閉</button>
       </div>
     </div>
   </div>
@@ -411,10 +417,36 @@
   </div>
 
   <script>
+    // Global Application State
     let isPremium = false;
     let currentLang = 'zh-TW';
     let currentOS = 'ios';
     let currentTargetId = '1';
+    let pendingBonusHours = 24;
+    let pendingBonusDescription = '週末陪伴一整天';
+    let currentInspectingPlantId = null;
+
+    let quoteCards = [
+      { text: "「我們總以為日子還很長，但刨除睡眠與雜事，一年裡能圍在餐桌前聽她碎念的時光，其實只剩這三百多個小時。」", source: "歲月沉思" },
+      { text: "「所謂父母子女一場，只不過意味著，你和他的緣分就是今生今世不斷地在目送他的背影漸行漸遠。」", source: "龍應台《目送》" },
+      { text: "「別等到想要握緊那雙手時，才發現手心裡只剩風的溫度。」", source: "時光註腳" }
+    ];
+    let currentQuoteIndex = 0;
+
+    let targets = [
+      {
+        id: '1',
+        name: '媽媽',
+        relation: '母親',
+        turningDate: '2029-12-31',
+        turningReason: '預計移居海外',
+        frequency: 'monthly',
+        hoursPerYear: 144,
+        bonusHours: 0,
+        modelType: 'ai',
+        aiSummary: '每月常態陪伴與三大節日返鄉精算。'
+      }
+    ];
 
     let gardenPlants = [
       {
@@ -434,16 +466,133 @@
         variety: 'bamboo',
         meaning: '花語：堅定長青、長久不滅的陪伴心意',
         story: '深夜在客廳聽她細數童年最想去的城市',
-        stage: 3,
-        waterCount: 9,
-        cultivations: 24,
+        stage: 2,
+        waterCount: 4,
+        cultivations: 10,
         icons: ['🌱', '🎋', '🎍']
       }
     ];
 
-    let currentInspectingPlantId = null;
+    let journals = [
+      {
+        id: 'j1',
+        date: '2026-08-15',
+        location: '彰化老家',
+        hours: 48,
+        title: '午後在廚房學會了媽媽手作筍乾排骨湯的火候',
+        content: '我們坐在走廊吃了兩碗湯，聊了小時候爬芒果樹的故事。'
+      }
+    ];
 
-    // 修正：植物故事/承諾對話框開啟並精確綁定資料
+    // Core Timer Engine
+    function calculateRemainingHours(target) {
+      const now = new Date();
+      const turning = new Date(target.turningDate);
+      if (turning <= now) return target.bonusHours || 0;
+
+      const diffTime = turning - now;
+      const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365.25);
+      const calculatedHours = Math.floor(diffYears * (target.hoursPerYear || 144));
+
+      return Math.max(0, calculatedHours + (target.bonusHours || 0));
+    }
+
+    function updateCountdownUI() {
+      const target = targets.find(t => t.id === currentTargetId) || targets[0];
+      if (!target) return;
+
+      const totalHours = calculateRemainingHours(target);
+      document.getElementById('displayHours').textContent = totalHours.toLocaleString();
+      
+      const totalDays = (totalHours / 24).toFixed(1);
+      document.getElementById('displaySubTimer').innerHTML = `約等同於 ${totalDays} 天相聚時光 • <span id="clockSecondsTicking">${getFormattedCurrentTime()}</span>`;
+
+      document.getElementById('targetRelation').textContent = target.relation || target.name;
+      document.getElementById('turningPointLabel').textContent = `告別時刻：${target.turningDate} (${target.turningReason || '規劃界線'})`;
+      document.getElementById('summaryBonus').textContent = `+${target.bonusHours || 0} 小時`;
+      document.getElementById('summaryFreq').textContent = `約 ${target.hoursPerYear || 144} 小時 / 年`;
+    }
+
+    function getFormattedCurrentTime() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      return `當前時間 ${h}時 ${m}分 ${s}秒 悄然流逝`;
+    }
+
+    setInterval(() => {
+      const secElem = document.getElementById('clockSecondsTicking');
+      if (secElem) secElem.textContent = getFormattedCurrentTime();
+    }, 1000);
+
+    // View Switching
+    function switchView(viewName) {
+      document.getElementById('viewCountdown').classList.add('hidden');
+      document.getElementById('viewJournal').classList.add('hidden');
+      document.getElementById('viewGarden').classList.add('hidden');
+
+      ['tabCountdown', 'tabJournal', 'tabGarden'].forEach(t => {
+        document.getElementById(t).className = "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-wabi-stone hover:text-wabi-ink dark:hover:text-stone-200";
+      });
+
+      const activeClass = "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-wabi-ink text-wabi-cream dark:bg-stone-100 dark:text-stone-900 shadow-sm";
+
+      if (viewName === 'countdown') {
+        document.getElementById('viewCountdown').classList.remove('hidden');
+        document.getElementById('tabCountdown').className = activeClass;
+      } else if (viewName === 'journal') {
+        document.getElementById('viewJournal').classList.remove('hidden');
+        document.getElementById('tabJournal').className = activeClass;
+        renderJournals();
+      } else if (viewName === 'garden') {
+        document.getElementById('viewGarden').classList.remove('hidden');
+        document.getElementById('tabGarden').className = activeClass + " flex items-center gap-1.5";
+        renderGarden();
+      }
+    }
+
+    // Modal Helpers
+    function openUpgradeModal() {
+      const m = document.getElementById('upgradeModal');
+      m.classList.remove('hidden');
+      setTimeout(() => m.classList.remove('opacity-0'), 10);
+    }
+
+    function closeUpgradeModal() {
+      const m = document.getElementById('upgradeModal');
+      m.classList.add('opacity-0');
+      setTimeout(() => m.classList.add('hidden'), 300);
+    }
+
+    function openSurpriseMeetingModal() {
+      const m = document.getElementById('surpriseMeetingModal');
+      m.classList.remove('hidden');
+      setTimeout(() => m.classList.remove('opacity-0'), 10);
+    }
+
+    function closeSurpriseMeetingModal() {
+      const m = document.getElementById('surpriseMeetingModal');
+      m.classList.add('opacity-0');
+      setTimeout(() => m.classList.add('hidden'), 300);
+    }
+
+    function selectSurprisePreset(hours, desc) {
+      pendingBonusHours = hours;
+      pendingBonusDescription = desc;
+      document.getElementById('selectedMeetingHoursDisplay').textContent = `+${hours} 小時`;
+    }
+
+    function confirmSurpriseMeetingBonus() {
+      const target = targets.find(t => t.id === currentTargetId);
+      if (target) {
+        target.bonusHours = (target.bonusHours || 0) + pendingBonusHours;
+        updateCountdownUI();
+        showToast(`🎉 已成功增加 +${pendingBonusHours} 小時陪伴刻度！`);
+      }
+      closeSurpriseMeetingModal();
+    }
+
     function openPlantStoryModal(plantId) {
       const plant = gardenPlants.find(p => p.id === plantId);
       if (!plant) return;
@@ -451,19 +600,23 @@
       currentInspectingPlantId = plantId;
       const stageIndex = Math.min(plant.icons.length - 1, plant.stage - 1);
       const icon = plant.icons[stageIndex] || '🌱';
-      const stageName = plant.stage === 1 ? '幼苗階段' : (plant.stage === 2 ? '含苞階段' : '盛開階段');
 
       document.getElementById('modalPlantIcon').textContent = icon;
-      document.getElementById('modalPlantStageTag').textContent = stageName;
       document.getElementById('modalPlantName').textContent = plant.name;
       document.getElementById('modalPlantMeaning').textContent = plant.meaning;
-      document.getElementById('modalPlantStory').textContent = plant.story || '尚未填寫手札陪伴承諾';
+      document.getElementById('modalPlantStory').textContent = plant.story || '尚未設定陪伴承諾';
       document.getElementById('modalPlantWaterCount').textContent = plant.waterCount;
       document.getElementById('modalPlantCultivations').textContent = plant.cultivations || plant.waterCount * 2;
 
       const m = document.getElementById('plantStoryModal');
       m.classList.remove('hidden');
       setTimeout(() => m.classList.remove('opacity-0'), 10);
+    }
+
+    function closePlantStoryModal() {
+      const m = document.getElementById('plantStoryModal');
+      m.classList.add('opacity-0');
+      setTimeout(() => m.classList.add('hidden'), 300);
     }
 
     function waterCurrentPlantFromModal() {
@@ -478,13 +631,7 @@
       }
       openPlantStoryModal(currentInspectingPlantId);
       renderGarden();
-      showToast(`💧 已為「${p.name}」灌溉！`);
-    }
-
-    function closePlantStoryModal() {
-      const m = document.getElementById('plantStoryModal');
-      m.classList.add('opacity-0');
-      setTimeout(() => m.classList.add('hidden'), 300);
+      showToast(`💧 成功為「${p.name}」灌溉！`);
     }
 
     function renderGarden() {
@@ -505,14 +652,51 @@
           <div class="w-16 h-24 sm:w-20 sm:h-28 flex items-center justify-center text-4xl sm:text-5xl transform group-hover:scale-110 transition duration-300">
             ${icon}
           </div>
-          <div class="w-12 h-3 rounded-full bg-wabi-ink/10 dark:bg-stone-700/50 mt-1 blur-[1px]"></div>
+          <div class="w-12 h-3 rounded-full bg-wabi-ink/10 mt-1 blur-[1px]"></div>
           <span class="text-xs font-serif font-medium mt-2 text-wabi-ink dark:text-stone-200">${p.name}</span>
-          <div class="flex items-center gap-1 mt-0.5">
-            <span class="text-[10px] px-1.5 py-0.2 rounded bg-wabi-moss/15 text-wabi-moss font-sans">${stageName}</span>
-          </div>
+          <span class="text-[10px] px-1.5 py-0.2 rounded bg-wabi-moss/15 text-wabi-moss font-sans mt-1">${stageName}</span>
         `;
         container.appendChild(col);
       });
+    }
+
+    function renderJournals() {
+      const container = document.getElementById('capsulesContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      journals.forEach(j => {
+        const card = document.createElement('div');
+        card.className = "glass-card rounded-2xl p-5 shadow-glass relative border-l-4 border-wabi-clay";
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-serif px-2 py-0.5 rounded bg-wabi-sand">${j.date}</span>
+            <span class="text-xs text-wabi-clay font-medium">${j.location}</span>
+          </div>
+          <h4 class="font-serif font-medium mt-2 mb-1 text-sm sm:text-base text-wabi-ink dark:text-stone-100">${j.title}</h4>
+          <p class="text-xs leading-relaxed text-wabi-stone">${j.content}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function nextQuoteCard() {
+      currentQuoteIndex = (currentQuoteIndex + 1) % quoteCards.length;
+      document.getElementById('displayQuoteText').textContent = quoteCards[currentQuoteIndex].text;
+      document.getElementById('quoteDayTag').textContent = `時光字卡 • ${quoteCards[currentQuoteIndex].source}`;
+      document.getElementById('quoteIndexIndicator').textContent = `${currentQuoteIndex + 1} / ${quoteCards.length}`;
+    }
+
+    function toggleProMode() {
+      isPremium = !isPremium;
+      document.getElementById('userTierText').textContent = isPremium ? "Pro 守護者 (無限)" : "免費方案 (1/1)";
+      showToast(isPremium ? "⚡ 已開啟 Pro 體驗模式" : "已切換回免費模式");
+    }
+
+    function toggleOSMode() {
+      currentOS = currentOS === 'ios' ? 'android' : 'ios';
+      document.getElementById('osModeLabel').textContent = currentOS === 'ios' ? '🍎 iOS' : '🤖 Android';
+      showToast(`已切換至 ${currentOS.toUpperCase()} 預覽環境`);
     }
 
     function showToast(msg) {
@@ -526,7 +710,9 @@
       }, 3000);
     }
 
+    // App Initialization
     window.addEventListener('DOMContentLoaded', () => {
+      updateCountdownUI();
       renderGarden();
     });
   </script>
