@@ -87,7 +87,7 @@
       <div class="flex items-center space-x-3">
         <span class="w-7 h-7 rounded-full bg-wabi-ink text-wabi-cream dark:bg-wabi-cream dark:text-wabi-ink flex items-center justify-center font-serif text-sm font-semibold tracking-tighter">餘</span>
         <div>
-          <h1 class="font-serif font-semibold text-lg tracking-wider text-wabi-ink dark:text-stone-100">Relic <span class="text-xs font-normal font-sans opacity-50 ml-1">時光餘額</span></h1>
+          <h1 class="font-serif font-semibold text-lg tracking-wider text-wabi-ink dark:text-stone-100">Relic <span id="appSubTitle" class="text-xs font-normal font-sans opacity-50 ml-1">時光餘額</span></h1>
         </div>
       </div>
 
@@ -137,14 +137,14 @@
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 pb-28">
     <div class="flex justify-center mb-8">
       <nav class="inline-flex p-1 rounded-2xl glass-card shadow-glass border border-wabi-sand dark:border-stone-800" aria-label="Tabs">
-        <button id="tabCountdown" onclick="switchView('countdown')" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-wabi-ink text-wabi-cream dark:bg-stone-100 dark:text-stone-900 shadow-sm">
+        <button id="tabCountdown" onclick="switchView('countdown')" data-i18n="timePointer" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 bg-wabi-ink text-wabi-cream dark:bg-stone-100 dark:text-stone-900 shadow-sm">
           ⏳ 時光指針
         </button>
-        <button id="tabJournal" onclick="switchView('journal')" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-wabi-stone hover:text-wabi-ink dark:hover:text-stone-200">
+        <button id="tabJournal" onclick="switchView('journal')" data-i18n="timeJournal" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-wabi-stone hover:text-wabi-ink dark:hover:text-stone-200">
           📜 時光手札
         </button>
         <button id="tabGarden" onclick="switchView('garden')" class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-wabi-stone hover:text-wabi-ink dark:hover:text-stone-200 flex items-center gap-1.5">
-          <span>🌸 回憶花園</span>
+          <span data-i18n="memoryGarden">🌸 回憶花園</span>
           <span class="text-[10px] bg-wabi-clay/20 text-wabi-clay px-1.5 py-0.5 rounded-full font-sans">Pro</span>
         </button>
       </nav>
@@ -258,10 +258,10 @@
     <div id="viewJournal" class="hidden space-y-6">
       <div class="flex items-center justify-between">
         <div>
-          <h2 class="font-serif font-semibold text-lg">時光手札 • 回憶膠囊</h2>
-          <p class="text-xs text-wabi-stone">每一場落幕的相聚，都值得被封存在琥珀色的記憶裡。</p>
+          <h2 class="font-serif font-semibold text-lg" data-i18n="timeJournalHeader">時光手札 • 回憶膠囊</h2>
+          <p class="text-xs text-wabi-stone" data-i18n="timeJournalSub">每一場落幕的相聚，都值得被封存在琥珀色的記憶裡。</p>
         </div>
-        <button onclick="openNewJournalModal()" class="px-3.5 py-2 rounded-xl bg-wabi-ink text-wabi-cream dark:bg-stone-100 dark:text-stone-900 text-xs font-medium hover:opacity-90 transition">
+        <button onclick="openNewJournalModal()" class="px-3.5 py-2 rounded-xl bg-wabi-ink text-wabi-cream dark:bg-stone-100 dark:text-stone-900 text-xs font-medium hover:opacity-90 transition" data-i18n="addJournalBtn">
           + 記錄這次相聚
         </button>
       </div>
@@ -277,17 +277,17 @@
               <span>✦ Premium 專屬心靈庭園</span>
               <span id="gardenProTag" class="text-[10px] bg-wabi-gold/20 text-wabi-clay px-1.5 py-0.2 rounded-full font-sans">需 Pro 權限</span>
             </div>
-            <h2 class="font-serif font-semibold text-xl">回憶花園 (Memory Garden)</h2>
-            <p class="text-xs text-wabi-stone mt-1 max-w-md">
+            <h2 class="font-serif font-semibold text-xl" data-i18n="gardenTitle">回憶花園 (Memory Garden)</h2>
+            <p class="text-xs text-wabi-stone mt-1 max-w-md" data-i18n="gardenDesc">
               將意念化為真實的牽絆。完成定期陪伴任務，在此灌溉只屬於你們的常青植物，並連結至特定時光日記。
             </p>
           </div>
           <div class="flex items-center gap-2">
             <button onclick="openPlantSeedModal()" class="px-3.5 py-2 rounded-xl bg-wabi-moss text-white text-xs font-medium hover:bg-opacity-90 transition flex items-center gap-1.5 shadow-sm">
-              <span>🌱 種下新回憶花木</span>
+              <span data-i18n="plantSeedBtn">🌱 種下新回憶花木</span>
             </button>
             <button onclick="waterAllPlants()" class="px-3.5 py-2 rounded-xl bg-white/70 dark:bg-stone-800 text-wabi-clay border border-wabi-clay/30 text-xs font-medium hover:bg-wabi-sand/60 transition flex items-center gap-1.5">
-              <span>💧 全園澆灌</span>
+              <span data-i18n="waterAllBtn">💧 全園澆灌</span>
             </button>
           </div>
         </div>
@@ -300,15 +300,15 @@
           <div class="p-3.5 rounded-xl border border-wabi-sand dark:border-stone-800 bg-white/40 dark:bg-stone-900/40">
             <div class="flex items-center justify-between mb-1">
               <h4 class="font-serif font-medium text-wabi-ink dark:text-stone-200 flex items-center gap-1.5">
-                <span>🌱 今日暖心任務提案</span>
+                <span data-i18n="dailyTaskTitle">🌱 今日暖心任務提案</span>
                 <span id="taskDateTag" class="text-[10px] px-1.5 py-0.5 rounded bg-wabi-sand dark:bg-stone-800 font-sans text-wabi-stone">每日更新</span>
               </h4>
               <div class="flex items-center gap-2">
-                <button onclick="completeTaskAndWater()" class="text-[10px] px-2 py-0.5 rounded bg-wabi-moss/20 text-wabi-moss hover:bg-wabi-moss hover:text-white transition font-medium">
+                <button onclick="completeTaskAndWater()" class="text-[10px] px-2 py-0.5 rounded bg-wabi-moss/20 text-wabi-moss hover:bg-wabi-moss hover:text-white transition font-medium" data-i18n="completeTaskBtn">
                   ✓ 標記完成並澆水
                 </button>
                 <button onclick="shuffleDailyTask()" class="text-[10px] text-wabi-clay hover:underline flex items-center gap-0.5">
-                  <span>換一個</span>
+                  <span data-i18n="shuffleTaskBtn">換一個</span>
                 </button>
               </div>
             </div>
@@ -316,17 +316,17 @@
           </div>
           <div class="p-3.5 rounded-xl border border-wabi-sand dark:border-stone-800 bg-white/40 dark:bg-stone-900/40">
             <div class="flex items-center justify-between mb-1">
-              <h4 class="font-serif font-medium text-wabi-ink dark:text-stone-200">花語與陪伴象徵</h4>
+              <h4 class="font-serif font-medium text-wabi-ink dark:text-stone-200" data-i18n="flowerMeaningTitle">花語與陪伴象徵</h4>
               <span class="text-[10px] text-wabi-stone" id="gardenStatsText">已培育 2 朵花木</span>
             </div>
-            <p class="text-wabi-stone leading-relaxed">每一株植物皆與特定的時光手札綁定。透過日常微小的陪伴與關懷，花木將從芽苗緩緩含苞、盛開，象徵這段關係中多了一座不可磨滅的燈塔。</p>
+            <p class="text-wabi-stone leading-relaxed" data-i18n="flowerMeaningDesc">每一株植物皆與特定的時光手札綁定。透過日常微小的陪伴與關懷，花木將從芽苗緩緩含苞、盛開，象徵這段關係中多了一座不可磨滅的燈塔。</p>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- MODALS -->
+  <!-- ALL MODALS -->
 
   <!-- 1. Surprise Meeting Modal -->
   <div id="surpriseMeetingModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
@@ -365,7 +365,7 @@
         <div class="flex items-center justify-between">
           <span class="font-serif font-semibold text-wabi-ink dark:text-stone-200">✨ AI 行程純陪伴精算</span>
         </div>
-        <textarea id="aiMeetPromptInput" rows="2" class="w-full px-3 py-2 rounded-xl bg-white/80 dark:bg-stone-800 border border-wabi-sand/80 text-xs focus:outline-none focus:border-wabi-clay" placeholder="例如：我想這週日中午回去陪媽媽煮火鍋，下午逛老街，傍晚七點離開..."></textarea>
+        <textarea id="aiMeetPromptInput" rows="2" class="w-full px-3 py-2 rounded-xl bg-white/80 dark:bg-stone-800 border border-wabi-sand/80 text-xs focus:outline-none focus:border-wabi-clay" placeholder="例如：我想這週日中午回去陪媽媽吃火鍋，下午逛老街，傍晚七點離開..."></textarea>
         <div class="flex items-center justify-between pt-1">
           <button type="button" onclick="fillMeetPromptExample()" class="text-[10px] text-wabi-stone hover:text-wabi-clay underline">帶入半日範例</button>
           <button type="button" id="btnRunMeetAI" onclick="estimateMeetingWithAI()" class="px-3 py-1.5 rounded-lg bg-wabi-ink text-wabi-cream font-medium hover:opacity-90 transition text-[11px]">讓 AI 推估純陪伴時長</button>
@@ -563,7 +563,7 @@
     </div>
   </div>
 
-  <!-- 7. Plant Seed Modal (擴充 4 種品種與短標題輸入) -->
+  <!-- 7. Plant Seed Modal -->
   <div id="plantSeedModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
     <div class="glass-card rounded-3xl p-6 sm:p-7 max-w-md w-full shadow-2xl border border-wabi-gold/40 max-h-[92vh] overflow-y-auto">
       <div class="flex items-center justify-between mb-4">
@@ -572,12 +572,12 @@
       </div>
       <div class="space-y-3.5 text-xs">
         <div>
-          <label class="block text-wabi-stone mb-1 font-medium">花木稱呼 / 短標題 (短提示)</label>
-          <input type="text" id="inputPlantShortTitle" placeholder="例如：陪媽媽學湯、每週通話" class="w-full px-3 py-2 rounded-xl bg-white/70 dark:bg-stone-800 border border-wabi-sand/80 focus:outline-none focus:border-wabi-clay font-medium text-wabi-ink dark:text-stone-100">
+          <label class="block text-wabi-stone mb-1 font-medium">自訂標籤 / 陪伴短備忘 (顯示於花木上方標籤)</label>
+          <input type="text" id="inputPlantCustomTag" placeholder="例如：陪媽媽學湯、每週通話" class="w-full px-3 py-2 rounded-xl bg-white/70 dark:bg-stone-800 border border-wabi-sand/80 focus:outline-none focus:border-wabi-clay font-medium text-wabi-ink dark:text-stone-100">
         </div>
 
         <div>
-          <label class="block text-wabi-stone mb-1.5 font-medium">選擇花木品種 (共 4 種)</label>
+          <label class="block text-wabi-stone mb-1.5 font-medium">選擇花木品種 (品種名稱會保留)</label>
           <div id="seedTypeSelector" class="grid grid-cols-2 gap-2 text-xs">
             <button type="button" data-variety="camellia" onclick="selectSeedVariety('camellia')" class="seed-option p-2.5 rounded-xl border border-wabi-clay bg-wabi-gold/10 text-left transition flex items-center gap-2">
               <span class="text-2xl">🌺</span>
@@ -626,9 +626,9 @@
   <div id="plantStoryModal" class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
     <div class="glass-card rounded-3xl p-6 sm:p-7 max-w-sm w-full shadow-2xl text-center border border-wabi-gold/40">
       <div id="modalPlantIcon" class="text-6xl mb-2 filter drop-shadow-md">🌺</div>
-      <span id="modalPlantStageTag" class="text-[10px] px-2 py-0.5 rounded-full bg-wabi-moss/10 text-wabi-moss font-serif">盛開階段</span>
-      <h3 id="modalPlantTitle" class="font-serif font-bold text-xl mt-2 text-wabi-ink dark:text-stone-100">陪媽媽學湯</h3>
-      <p id="modalPlantName" class="text-xs text-wabi-clay italic font-serif my-1">深情山茶花 • 花語：謙遜的美德、深沉且執著的愛</p>
+      <span id="modalPlantTag" class="text-[10px] px-2.5 py-0.5 rounded-full bg-wabi-sand/80 text-wabi-stone font-serif">陪媽媽學湯</span>
+      <h3 id="modalPlantName" class="font-serif font-bold text-xl mt-2 text-wabi-ink dark:text-stone-100">深情山茶花</h3>
+      <p id="modalPlantMeaning" class="text-xs text-wabi-clay italic font-serif my-1">花語：謙遜的美德、深沉且執著的愛</p>
 
       <div class="mt-3 p-3.5 rounded-2xl bg-wabi-sand/40 dark:bg-stone-800/50 text-left text-xs space-y-2 border border-wabi-sand/60">
         <div>
@@ -728,10 +728,10 @@
     let pendingDeletion = null;
     let pendingUploadedPhotos = [];
 
-    // Dictionary
+    // Complete i18n Data Dictionary
     const i18nDict = {
       'zh-TW': {
-        timePointer: "⏳ 時光指針", timeJournal: "📜 時光手札", memoryGarden: "🌸 回憶花園",
+        subTitle: "時光餘額", timePointer: "⏳ 時光指針", timeJournal: "📜 時光手札", memoryGarden: "🌸 回憶花園",
         privacyPolicy: "隱私權政策", deleteAccount: "刪除帳號 (App Store 規範)", loginOrLogout: "Google 登入",
         googleLogin: "Google 登入", tryProBtn: "⚡ 體驗 Pro", proActiveBtn: "👑 Pro 體驗中",
         currentTargetLabel: "目前計算對象", editFarewellBtn: "修改告別時刻", addTargetBtn: "新增對象",
@@ -739,42 +739,100 @@
         quoteClickHint: "點擊隨機翻閱 • 每日自動更換", surpriseVisitBtn: "安排驚喜見面 (自訂 / AI 精算陪伴時長)",
         surpriseVisitDesc: "點擊即化焦慮為行動。此生相聚的刻度，由你此刻的決定延長。",
         freqModelTitle: "相聚頻率演算模型", adjustFreqBtn: "✨ 調整頻率與 AI 智慧推估",
-        statAnnualHours: "年均預估相聚時數", statPatternTitle: "聚會規律特徵", statBonusTitle: "已累計奪回紅利"
+        statAnnualHours: "年均預估相聚時數", statPatternTitle: "聚會規律特徵", statBonusTitle: "已累計奪回紅利",
+        timeJournalHeader: "時光手札 • 回憶膠囊", timeJournalSub: "每一場落幕的相聚，都值得被封存在琥珀色的記憶裡。",
+        addJournalBtn: "+ 記錄這次相聚", gardenTitle: "回憶花園 (Memory Garden)",
+        gardenDesc: "將意念化為真實的牽絆。完成定期陪伴任務，在此灌溉只屬於你們的常青植物，並連結至特定時光日記。",
+        plantSeedBtn: "🌱 種下新回憶花木", waterAllBtn: "💧 全園澆灌", dailyTaskTitle: "🌱 今日暖心任務提案",
+        completeTaskBtn: "✓ 標記完成並澆水", shuffleTaskBtn: "換一個", flowerMeaningTitle: "花語與陪伴象徵",
+        flowerMeaningDesc: "每一株植物皆與特定的時光手札綁定。透過日常微小的陪伴與關懷，花木將從芽苗緩緩含苞、盛開，象徵這段關係中多了一座不可磨滅的燈塔。",
+        quotes: [
+          { text: "「我們總以為日子還很長，但刨除睡眠與雜事，一年裡能圍在餐桌前聽她碎念的時光，其實只剩這三百多個小時。」", source: "歲月沉思" },
+          { text: "「所謂父母子女一場，只不過意味著，你和他的緣分就是今生今世不斷地在目送他的背影漸行漸遠。」", source: "龍應台《目送》" },
+          { text: "「別等到想要握緊那雙手時，才發現手心裡只剩風的溫度。相聚是不可逆的減法，但真心可以讓它變成永恆。」", source: "時光註腳" }
+        ],
+        tasks: [
+          "打一通不帶任何目的的 10 分鐘電話，問問媽媽小時候最喜歡吃的一道點心。",
+          "翻出一張五年前的舊合照傳給對方，跟他說一句：『剛剛突然看到，好想你。』",
+          "問一個從未問過長輩的問題：『你二十歲那年，最嚮往做的一件事是什麼？』"
+        ],
+        varieties: {
+          'camellia': { name: '深情山茶花', meaning: '花語：謙遜的美德、深沉且執著的愛' },
+          'sakura': { name: '奈良山櫻', meaning: '花語：高雅純潔、珍貴的短暫片刻' },
+          'bamboo': { name: '青翠若竹', meaning: '花語：節節高升、堅定長青的陪伴' },
+          'sunflower': { name: '溫暖向日葵', meaning: '花語：陽光熱烈、永遠朝向你的關懷' }
+        },
+        defaultTargets: { '1': { name: '媽媽', relation: '母親' } }
       },
       'en': {
-        timePointer: "⏳ Time Left", timeJournal: "📜 Memory Capsules", memoryGarden: "🌸 Memory Garden",
+        subTitle: "Time Balance", timePointer: "⏳ Time Left", timeJournal: "📜 Memory Capsules", memoryGarden: "🌸 Memory Garden",
         privacyPolicy: "Privacy Policy", deleteAccount: "Delete Account", loginOrLogout: "Sign in with Google",
         googleLogin: "Sign in with Google", tryProBtn: "⚡ Try Pro", proActiveBtn: "👑 Pro Active",
         currentTargetLabel: "CURRENT FOCUS", editFarewellBtn: "Edit Farewell", addTargetBtn: "Add Target",
         remainingTimeHeader: "ESTIMATED REMAINING TIME TOGETHER", hoursUnit: "Hours", dailyQuoteTag: "Daily Card",
         quoteClickHint: "Tap to flip • Refreshes daily", surpriseVisitBtn: "Plan a Surprise Visit",
-        surpriseVisitDesc: "Turn anxiety into action.", freqModelTitle: "Companionship Model",
-        adjustFreqBtn: "✨ Adjust Frequency", statAnnualHours: "Est. Hours / Year", statPatternTitle: "Visit Habit", statBonusTitle: "Bonus Time"
+        surpriseVisitDesc: "Turn anxiety into meaningful action.", freqModelTitle: "Companionship Model",
+        adjustFreqBtn: "✨ Adjust Frequency", statAnnualHours: "Est. Hours / Year", statPatternTitle: "Visit Habit", statBonusTitle: "Bonus Time",
+        timeJournalHeader: "Memory Capsules", timeJournalSub: "Every moment spent together deserves to be preserved in amber.",
+        addJournalBtn: "+ Record New Visit", gardenTitle: "Memory Garden",
+        gardenDesc: "Cultivate your bond into something real. Complete daily acts of care to nurture everlasting plants.",
+        plantSeedBtn: "🌱 Plant New Flower", waterAllBtn: "💧 Water Garden", dailyTaskTitle: "🌱 Daily Care Suggestion",
+        completeTaskBtn: "✓ Complete & Water", shuffleTaskBtn: "Shuffle", flowerMeaningTitle: "Floral Meaning",
+        flowerMeaningDesc: "Each plant ties to a special memory. Nurture them through small everyday acts of love.",
+        quotes: [
+          { text: "“We always think time is endless, but minus sleep and errands, we only have a few hundred hours left together.”", source: "Time Reflections" },
+          { text: "“Parenting and childhood are just a long farewell, watching each other walk further away into the horizon.”", source: "Sight of the Back" },
+          { text: "“Don't wait until you reach out, only to catch the temperature of the cold wind.”", source: "Relic Notes" }
+        ],
+        tasks: [
+          "Call without any motive for 10 minutes, ask about their favorite childhood snack.",
+          "Find a photo from 5 years ago and text them: 'I missed you when I saw this.'",
+          "Ask a question you've never asked: 'What was your dream when you were twenty?'"
+        ],
+        varieties: {
+          'camellia': { name: 'Camellia', meaning: 'Language: Modest virtue & deep devoted love' },
+          'sakura': { name: 'Mountain Sakura', meaning: 'Language: Elegant purity & precious fleeting moments' },
+          'bamboo': { name: 'Green Bamboo', meaning: 'Language: Steadfast vitality & enduring companionship' },
+          'sunflower': { name: 'Warm Sunflower', meaning: 'Language: Radiance, warmth & unwavering devotion' }
+        },
+        defaultTargets: { '1': { name: 'Mom', relation: 'Mother' } }
       },
       'ja': {
-        timePointer: "⏳ 時の残高", timeJournal: "📜 想い出の手札", memoryGarden: "🌸 想い出の庭園",
+        subTitle: "時の残高", timePointer: "⏳ 時の残高", timeJournal: "📜 想い出の手札", memoryGarden: "🌸 想い出の庭園",
         privacyPolicy: "プライバシーポリシー", deleteAccount: "アカウント削除", loginOrLogout: "Googleでログイン",
         googleLogin: "Googleでログイン", tryProBtn: "⚡ Proを体験", proActiveBtn: "👑 Pro体験中",
         currentTargetLabel: "現在の推計対象", editFarewellBtn: "別れの刻を編集", addTargetBtn: "対象を追加",
         remainingTimeHeader: "生涯で真に寄り添える殘された時間", hoursUnit: "時間", dailyQuoteTag: "本日の心境カード",
         quoteClickHint: "タップでめくる • 毎日更新", surpriseVisitBtn: "サプライズ訪問を計画",
-        surpriseVisitDesc: "不安を行動に変える。", freqModelTitle: "相聚頻度の推計モデル",
-        adjustFreqBtn: "✨ 頻度調整と AI 推計", statAnnualHours: "年間純粹な時間", statPatternTitle: "交流パターン", statBonusTitle: "特別ボーナス"
+        surpriseVisitDesc: "不安を行動に変える。かけがえのない時間を延ばそう。", freqModelTitle: "相聚頻度の推計モデル",
+        adjustFreqBtn: "✨ 頻度調整と AI 推計", statAnnualHours: "年間純粹な時間", statPatternTitle: "交流パターン", statBonusTitle: "特別ボーナス",
+        timeJournalHeader: "想い出のカプセル", timeJournalSub: "別れの後に残る温もりを、琥珀色の記憶として大切に保存する。",
+        addJournalBtn: "+ 訪問を記録する", gardenTitle: "想い出の庭園",
+        gardenDesc: "想いを確かな絆へ。日々の心遣いを通じて常緑の植物を育て、記憶の灯台を建てよう。",
+        plantSeedBtn: "🌱 花木を植える", waterAllBtn: "💧 庭園全体に水やり", dailyTaskTitle: "🌱 本日の温もり提案",
+        completeTaskBtn: "✓ 完了して水やり", shuffleTaskBtn: "変更", flowerMeaningTitle: "花言葉と象徴",
+        flowerMeaningDesc: "それぞれの植物は特別な手札と繋がっています。小さな思いやりが花を咲かせます。",
+        quotes: [
+          { text: "「時間は無限にあると思いがちだが、睡眠や雑務を除けば、一緒に過ごせるのはあと数百時間しかない。」", source: "時の思索" },
+          { text: "「親子とは、お互いの後ろ姿が遠ざかっていくのを静かに見送る縁に過ぎないのかもしれない。」", source: "見送る" },
+          { text: "「手を握ろうとした時には、風の冷たさしか残っていないということのないように。」", source: "Relic 備忘" }
+        ],
+        tasks: [
+          "用事のない10分間の電話をかけ、子供の頃好きだったお菓子の話を聞いてみよう。",
+          "5年前の懐かしい写真を1枚探し、「写真を見て思い出したよ」とメッセージを送ろう。",
+          "これまで聞いたことのない質問をしてみよう：「二十歳の頃、一番叶えたかった夢は何？」"
+        ],
+        varieties: {
+          'camellia': { name: '深情の山茶花', meaning: '花言葉：控えめな美徳、深い愛' },
+          'sakura': { name: '奈良の山桜', meaning: '花言葉：気品ある純粋さ、かけがえのない瞬間' },
+          'bamboo': { name: '青翠の若竹', meaning: '花言葉：不変の絆、永恒の寄り添い' },
+          'sunflower': { name: '温もりの向日葵', meaning: '花言葉：情熱的な光、あなたへの一途な関心' }
+        },
+        defaultTargets: { '1': { name: 'お母さん', relation: '母親' } }
       }
     };
 
-    const quoteCards = [
-      { text: "「我們總以為日子還很長，但刨除睡眠與雜事，一年裡能圍在餐桌前聽她碎念的時光，其實只剩這三百多個小時。」", source: "歲月沉思" },
-      { text: "「所謂父母子女一場，只不過意味著，你和他的緣分就是今生今世不斷地在目送他的背影漸行漸遠。」", source: "龍應台《目送》" },
-      { text: "「別等到想要握緊那雙手時，才發現手心裡只剩風的溫度。相聚是不可逆的減法，但真心可以讓它變成永恆。」", source: "時光註腳" }
-    ];
     let currentQuoteIndex = 0;
-
-    let dailyTaskPool = [
-      "打一通不帶任何目的的 10 分鐘電話，問問媽媽小時候最喜歡吃的一道點心。",
-      "翻出一張五年前的舊合照傳給對方，跟他說一句：『剛剛突然看到，好想你。』",
-      "問一個從未問過長輩的問題：『你二十歲那年，最嚮往做的一件事是什麼？』"
-    ];
 
     let targets = [
       {
@@ -790,14 +848,12 @@
       }
     ];
 
-    // 種植花木列表 (包含 shortTitle)
+    // 種植花木列表 (customTag 用於灰色自訂標籤)
     let gardenPlants = [
       {
         id: 'p1',
-        shortTitle: '深情山茶花',
-        name: '深情山茶花',
+        customTag: '陪媽媽學湯',
         variety: 'camellia',
-        meaning: '花語：謙遜的美德、深沉且執著的愛',
         story: '為媽媽做的一頓晚餐與手作筍乾排骨湯',
         stage: 3,
         waterCount: 7,
@@ -806,10 +862,8 @@
       },
       {
         id: 'p2',
-        shortTitle: '青翠若竹',
-        name: '青翠若竹',
+        customTag: '每週深夜通話',
         variety: 'bamboo',
-        meaning: '花語：堅定長青、長久不滅的陪伴心意',
         story: '深夜在客廳聽她細數童年最想去的城市',
         stage: 3,
         waterCount: 9,
@@ -831,14 +885,6 @@
         ]
       }
     ];
-
-    // Variety Dictionary mapping
-    const varietyMeta = {
-      'camellia': { name: '深情山茶花', meaning: '花語：謙遜的美德、深沉且執著的愛', icons: ['🌱', '🌿', '🌺'] },
-      'sakura': { name: '奈良山櫻', meaning: '花語：高雅純潔、珍貴的短暫片刻', icons: ['🌱', '🌿', '🌸'] },
-      'bamboo': { name: '青翠若竹', meaning: '花語：節節高升、堅定長青的陪伴', icons: ['🌱', '🎋', '🎍'] },
-      'sunflower': { name: '溫暖向日葵', meaning: '花語：陽光熱烈、永遠朝向你的關懷', icons: ['🌱', '🌿', '🌻'] }
-    };
 
     // Countdown Logic
     function calculateRemainingHours(target) {
@@ -1351,7 +1397,7 @@
     function openPlantSeedModal() {
       if (!isPremium) { openUpgradeModal(); return; }
       selectSeedVariety('camellia');
-      document.getElementById('inputPlantShortTitle').value = '';
+      document.getElementById('inputPlantCustomTag').value = '';
       document.getElementById('inputPlantStory').value = '';
       const m = document.getElementById('plantSeedModal');
       m.classList.remove('hidden');
@@ -1375,26 +1421,27 @@
     }
 
     function confirmPlantSeed() {
-      const meta = varietyMeta[selectedSeedVariety] || varietyMeta['camellia'];
-      const shortTitle = document.getElementById('inputPlantShortTitle').value.trim() || meta.name;
+      const dict = i18nDict[currentLang] || i18nDict['zh-TW'];
+      const vMeta = dict.varieties[selectedSeedVariety] || dict.varieties['camellia'];
+      const icons = selectedSeedVariety === 'bamboo' ? ['🌱', '🎋', '🎍'] : (selectedSeedVariety === 'sakura' ? ['🌱', '🌿', '🌸'] : (selectedSeedVariety === 'sunflower' ? ['🌱', '🌿', '🌻'] : ['🌱', '🌿', '🌺']));
+
+      const customTag = document.getElementById('inputPlantCustomTag').value.trim();
       const story = document.getElementById('inputPlantStory').value.trim() || '許下一個為對方空出時間的承諾';
 
       gardenPlants.push({
         id: 'p' + Date.now(),
-        shortTitle: shortTitle,
-        name: meta.name,
+        customTag: customTag,
         variety: selectedSeedVariety,
-        meaning: meta.meaning,
         story: story,
         stage: 1,
         waterCount: 1,
         cultivations: 1,
-        icons: meta.icons
+        icons: icons
       });
 
       closePlantSeedModal();
       renderGarden();
-      showToast(`🌱 已成功在花園種下「${shortTitle}」！`);
+      showToast(`🌱 已成功在花園種下「${vMeta.name}」！`);
     }
 
     function openPlantStoryModal(id) {
@@ -1402,13 +1449,16 @@
       if (!p) return;
 
       currentInspectingPlantId = id;
+      const dict = i18nDict[currentLang] || i18nDict['zh-TW'];
+      const vMeta = dict.varieties[p.variety] || dict.varieties['camellia'];
+
       const stageIdx = Math.min(p.icons.length - 1, p.stage - 1);
-      const stageName = p.stage === 1 ? '初生幼苗' : (p.stage === 2 ? '青翠含苞' : '燦爛盛開');
+      const defaultStageText = p.stage === 1 ? '初生幼苗' : (p.stage === 2 ? '青翠含苞' : '燦爛盛開');
 
       document.getElementById('modalPlantIcon').textContent = p.icons[stageIdx];
-      document.getElementById('modalPlantStageTag').textContent = stageName;
-      document.getElementById('modalPlantTitle').textContent = p.shortTitle || p.name;
-      document.getElementById('modalPlantName').textContent = `${p.name} • ${p.meaning}`;
+      document.getElementById('modalPlantTag').textContent = p.customTag || defaultStageText;
+      document.getElementById('modalPlantName').textContent = vMeta.name;
+      document.getElementById('modalPlantMeaning').textContent = vMeta.meaning;
       document.getElementById('modalPlantStory').textContent = p.story;
       document.getElementById('modalPlantWaterCount').textContent = p.waterCount;
       document.getElementById('modalPlantCultivations').textContent = p.cultivations;
@@ -1436,7 +1486,7 @@
 
       openPlantStoryModal(currentInspectingPlantId);
       renderGarden();
-      showToast(`💧 已為「${p.shortTitle || p.name}」澆水！`);
+      showToast(`💧 已為「${p.customTag || '花木'}」澆水！`);
     }
 
     function waterAllPlants() {
@@ -1472,11 +1522,13 @@
       container.innerHTML = '';
 
       document.getElementById('gardenStatsText').textContent = `已培育 ${gardenPlants.length} 朵花木`;
+      const dict = i18nDict[currentLang] || i18nDict['zh-TW'];
 
       gardenPlants.forEach(p => {
+        const vMeta = dict.varieties[p.variety] || dict.varieties['camellia'];
         const stageIdx = Math.min(p.icons.length - 1, p.stage - 1);
         const icon = p.icons[stageIdx] || '🌱';
-        const stageName = p.stage === 1 ? '初生幼苗' : (p.stage === 2 ? '青翠含苞' : '燦爛盛開');
+        const defaultStageText = p.stage === 1 ? '初生幼苗' : (p.stage === 2 ? '青翠含苞' : '燦爛盛開');
 
         const col = document.createElement('div');
         col.className = "flex flex-col items-center group cursor-pointer p-2 rounded-2xl hover:bg-wabi-sand/40 transition duration-300";
@@ -1487,8 +1539,16 @@
             ${icon}
           </div>
           <div class="w-12 h-3 rounded-full bg-wabi-ink/10 mt-1 blur-[1px]"></div>
-          <span class="text-xs font-serif font-bold mt-2 text-wabi-ink dark:text-stone-100 truncate max-w-[100px] text-center">${p.shortTitle || p.name}</span>
-          <span class="text-[10px] px-1.5 py-0.2 rounded bg-wabi-moss/15 text-wabi-moss font-sans mt-0.5">${stageName}</span>
+          
+          <!-- 上方灰色自訂標籤 / 生長狀態 -->
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-wabi-sand/80 dark:bg-stone-800 text-wabi-stone font-sans mt-1.5 truncate max-w-[110px] text-center">
+            ${p.customTag || defaultStageText}
+          </span>
+
+          <!-- 主標題：固定保留品種名稱 -->
+          <span class="text-xs font-serif font-bold mt-1 text-wabi-ink dark:text-stone-100 truncate max-w-[110px] text-center">
+            ${vMeta.name}
+          </span>
         `;
         container.appendChild(col);
       });
@@ -1496,19 +1556,56 @@
 
     // Daily Quotes & Tasks
     function nextQuoteCard() {
-      currentQuoteIndex = (currentQuoteIndex + 1) % quoteCards.length;
-      document.getElementById('displayQuoteText').textContent = quoteCards[currentQuoteIndex].text;
-      document.getElementById('quoteDayTag').textContent = `時光字卡 • ${quoteCards[currentQuoteIndex].source}`;
-      document.getElementById('quoteIndexIndicator').textContent = `${currentQuoteIndex + 1} / ${quoteCards.length}`;
+      const dict = i18nDict[currentLang] || i18nDict['zh-TW'];
+      currentQuoteIndex = (currentQuoteIndex + 1) % dict.quotes.length;
+      document.getElementById('displayQuoteText').textContent = dict.quotes[currentQuoteIndex].text;
+      document.getElementById('quoteDayTag').textContent = `時光字卡 • ${dict.quotes[currentQuoteIndex].source}`;
+      document.getElementById('quoteIndexIndicator').textContent = `${currentQuoteIndex + 1} / ${dict.quotes.length}`;
     }
 
     function shuffleDailyTask() {
-      const idx = Math.floor(Math.random() * dailyTaskPool.length);
-      document.getElementById('dailyTaskText').textContent = dailyTaskPool[idx];
+      const dict = i18nDict[currentLang] || i18nDict['zh-TW'];
+      const idx = Math.floor(Math.random() * dict.tasks.length);
+      document.getElementById('dailyTaskText').textContent = dict.tasks[idx];
       showToast('已換一則暖心任務提案');
     }
 
-    // User Dropdown & Security
+    // Languages & Modes
+    function changeLanguage(lang) {
+      currentLang = lang;
+      const dict = i18nDict[lang] || i18nDict['zh-TW'];
+
+      // 替換全靜態 data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      // 副標題
+      document.getElementById('appSubTitle').textContent = dict.subTitle;
+
+      // 更新預設對象
+      if (dict.defaultTargets[currentTargetId]) {
+        const def = dict.defaultTargets[currentTargetId];
+        const t = targets.find(item => item.id === currentTargetId);
+        if (t) {
+          t.name = def.name;
+          t.relation = def.relation;
+        }
+      }
+
+      // 刷新當前內容與圖卡
+      currentQuoteIndex = 0;
+      document.getElementById('displayQuoteText').textContent = dict.quotes[0].text;
+      document.getElementById('quoteDayTag').textContent = `時光字卡 • ${dict.quotes[0].source}`;
+      document.getElementById('dailyTaskText').textContent = dict.tasks[0];
+
+      updateCountdownUI();
+      renderGarden();
+      showToast(`Language switched: ${lang}`);
+    }
+
+    // User Dropdown & Account
     function toggleUserDropdown() {
       document.getElementById('userDropdown').classList.toggle('hidden');
     }
@@ -1564,17 +1661,6 @@
       renderGarden();
       document.getElementById('authBtnText').textContent = 'Google 登入';
       showToast('⚠️ 所有個人資料已依規範永久抹除');
-    }
-
-    // Languages & Modes
-    function changeLanguage(lang) {
-      currentLang = lang;
-      const dict = i18nDict[lang] || i18nDict['zh-TW'];
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.textContent = dict[key];
-      });
-      showToast(`已切換語言：${lang}`);
     }
 
     function toggleOSMode() {
